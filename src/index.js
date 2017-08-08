@@ -4,7 +4,9 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import promise from 'redux-promise';
-// import App from './components/app';
+
+import App from './components/app';
+import NavBar from './components/navbar';
 
 import reducers from './reducers';
 import PostsIndex from './components/posts_index';
@@ -15,13 +17,14 @@ const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
 
 ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducers)}>
-    {/* <App /> */}
     <BrowserRouter>
       <div>
+        <NavBar />
         <Switch>
           <Route path='/posts/new' component={PostsNew} />
           <Route path='/posts/:id' component={PostsShow} />
-          <Route path='/' component={PostsIndex} />
+          <Route path='/posts' component={PostsIndex} />
+          <Route path='/' component={App} />
         </Switch>
       </div>
     </BrowserRouter>
