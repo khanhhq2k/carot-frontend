@@ -3,9 +3,13 @@ export const FETCH_POSTS = 'fetch_posts';
 export const CREATE_POST = 'create_post'
 export const FETCH_POST = 'fetch_post';
 export const DELETE_POST = 'delete_post';
+export const FETCH_AREAS = 'fetch_areas';
 
 const ROOT_URL = 'http://reduxblog.herokuapp.com/api';
 const API_KEY = '?key=khanhqkey123';
+
+const CAROT_URL = 'https://carotvn.ga/api';
+
 export function fetchPosts() {
   const request = axios.get(`${ROOT_URL}/posts${API_KEY}`);
   return {
@@ -37,5 +41,13 @@ export function deletePost(id, callback) {
   return {
     type: DELETE_POST,
     payload: id
+  };
+}
+
+export function fetchAreas(){
+  const request = axios.get(`${CAROT_URL}/area/?cm=getlist`);
+  return {
+    type: FETCH_AREAS,
+    payload: request
   };
 }
