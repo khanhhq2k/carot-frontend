@@ -12,7 +12,9 @@ export default class NavBar extends Component {
         <li className="nav-item">
           <NavLinkHelper to="/posts" exact>Posts</NavLinkHelper>
         </li>
-
+        <li className="nav-item">
+          <NavLinkHelper to="/areas" exact>Areas</NavLinkHelper>
+        </li>
       </ul>
     );
   }

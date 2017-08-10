@@ -19,7 +19,6 @@ class PostsIndex extends Component {
           <Link to={`/posts/${post.id}`}>
             {post.title}
           </Link>
-
         </li>
       );
     });
@@ -28,15 +27,23 @@ class PostsIndex extends Component {
   render(){
     return (
       <div>
-        <div className='text-xs-right'>
-          <Link className='btn btn-primary' to='/posts/new'>
-            Add a Post
-          </Link>
+        <div className='posts-header row'>
+          <div className='col-xs-6'>
+            <h3>Posts</h3>
+          </div>
+          <div className='text-xs-right add-post-btn col-xs-6'>
+            <Link className='btn btn-primary' to='/posts/new'>
+              Add a Post
+            </Link>
+          </div>
         </div>
-        <h3>Posts</h3>
-        <ul className='list-group'>
-          { this.renderPosts() }
-        </ul>
+        <div className='posts-list row'>
+          <div className='col-xs-12'>
+            <ul className='list-group'>
+              { this.renderPosts() }
+            </ul>
+          </div>
+        </div>
       </div>
     );
   }
