@@ -15,9 +15,12 @@ class AreasIndex extends Component {
   renderAreas(){
     return _.map(this.props.areas, area => {
       return (
-        <li className='list-group-item' key={area.Id}>
-          {area.Name}
-        </li>
+        <tr key={area.Id}>
+          <td>{area.Name}</td>
+          <td>{area.Description}</td>
+          <td>Edit</td>
+          <td>Delete</td>
+        </tr>
       );
     });
 
@@ -25,14 +28,21 @@ class AreasIndex extends Component {
   render(){
     return(
       <div>
-        <div className='row'>
-          Area Index
-        </div>
         <div className='areas-list row'>
           <div className='col-xs-12'>
-            <ul className='list-group'>
-              { this.renderAreas() }
-            </ul>
+            <table className="table table-striped table-hover">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Name</th>
+                  <th>Description</th>
+                  <th colSpan='2'>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                { this.renderAreas() }
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
