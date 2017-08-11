@@ -16,6 +16,7 @@ class AreasIndex extends Component {
     return _.map(this.props.areas, area => {
       return (
         <tr key={area.Id}>
+          <td>{area.Id}</td>
           <td>{area.Name}</td>
           <td>{area.Description}</td>
           <td>Edit</td>
@@ -28,6 +29,16 @@ class AreasIndex extends Component {
   render(){
     return(
       <div>
+        <div className='areas-header row'>
+          <div className='col-xs-6'>
+            <h3>Areas Index</h3>
+          </div>
+          <div className='text-xs-right add-area-btn col-xs-6'>
+            <Link className='btn btn-primary' to='/areas/new'>
+              Add Area
+            </Link>
+          </div>
+        </div>
         <div className='areas-list row'>
           <div className='col-xs-12'>
             <table className="table table-striped table-hover">
@@ -46,8 +57,6 @@ class AreasIndex extends Component {
           </div>
         </div>
       </div>
-
-
     );
   }
 }
