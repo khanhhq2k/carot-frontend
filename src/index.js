@@ -14,6 +14,7 @@ import PostsNew from './components/posts_new';
 import PostsShow from './components/posts_show';
 
 import AreasIndex from './components/areas_index';
+import AreasNew from './components/areas_new';
 
 const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
 
@@ -26,6 +27,7 @@ ReactDOM.render(
           <Route path='/posts/new' component={PostsNew} />
           <Route path='/posts/:id' component={PostsShow} />
           <Route path='/posts' component={PostsIndex} />
+          <Route path='/areas/new' component={AreasNew} />
           <Route path='/areas' component={AreasIndex} />
           <Route path='/' component={App} />
         </Switch>

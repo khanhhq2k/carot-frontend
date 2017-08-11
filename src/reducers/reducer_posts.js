@@ -13,7 +13,6 @@ export default function(state = {}, action) {
       //ES6 way, save as above:
       // "key interpolation"
       return { ...state, [action.payload.data.id]: action.payload.data }
-      return newState;
     case DELETE_POST:
       //action.payload == `id` as we defined in action creator
       //remove key value pair from app state object
