@@ -1,4 +1,4 @@
-import { FETCH_AREAS } from '../actions/index';
+import { FETCH_AREAS, DELETE_AREA } from '../actions/index';
 import _ from 'lodash';
 
 export default function(state = {}, action) {
@@ -16,10 +16,10 @@ export default function(state = {}, action) {
     //   // "key interpolation"
     //   return { ...state, [action.payload.data.id]: action.payload.data }
     //   return newState;
-    // case DELETE_POST:
-    //   //action.payload == `id` as we defined in action creator
-    //   //remove key value pair from app state object
-    //   return _.omit(state, action.payload);
+    case DELETE_AREA:
+      //action.payload == `id` as we defined in action creator
+      //remove key value pair from app state object
+      return _.omit(state, action.payload);
     default:
       return state;
   }

@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import _ from 'lodash';
 
-import {fetchAreas} from '../actions/index';
+import {fetchAreas, deleteArea} from '../actions/index';
 
 class AreasIndex extends Component {
   componentDidMount(){
@@ -19,14 +19,22 @@ class AreasIndex extends Component {
           <td>{area.Id}</td>
           <td>{area.Name}</td>
           <td>{area.Description}</td>
-          <td>Edit</td>
-          <td>Delete</td>
+          <td><button type="button" className="btn btn-link">Edit</button></td>
+          <td><button type="button" className="btn btn-link" onClick={this.onDeleteAreaClick.bind(this, area.Id)}>Delete</button></td>
         </tr>
       );
     });
-
+  }
+  onDeleteAreaClick(area_id){
+    const values = {
+      id: area_id
+    };
+    this.props.deleteArea(values);
   }
   render(){
+    if(!this.props.areas){
+      return <div>Loading...</div>;
+    }
     return(
       <div>
         <div className='areas-header row'>
@@ -65,4 +73,4 @@ function mapStateToProps(state){
   return {areas: state.areas}
 }
 
-export default connect(mapStateToProps, {fetchAreas: fetchAreas})(AreasIndex);
+export default connect(mapStateToProps, {fetchAreas, deleteArea})(AreasIndex);

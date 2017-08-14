@@ -4,7 +4,8 @@ export const CREATE_POST = 'create_post'
 export const FETCH_POST = 'fetch_post';
 export const DELETE_POST = 'delete_post';
 export const FETCH_AREAS = 'fetch_areas';
-export const CREATE_AREA = 'create_area'
+export const CREATE_AREA = 'create_area';
+export const DELETE_AREA = 'delete_area';
 
 
 const ROOT_URL = 'http://reduxblog.herokuapp.com/api';
@@ -60,5 +61,13 @@ export function createArea(values, callback) {
   return {
     type: CREATE_AREA,
     payload: request
+  }
+}
+
+export function deleteArea(values){
+  const request = axios.post(`${CAROT_URL}/area/?cm=delete`, values);
+  return {
+    type: DELETE_AREA,
+    payload: values.id // return id of deleted area
   }
 }
