@@ -19,7 +19,9 @@ class AreasIndex extends Component {
           <td>{area.Id}</td>
           <td>{area.Name}</td>
           <td>{area.Description}</td>
-          <td><button type="button" className="btn btn-link">Edit</button></td>
+          <td>
+            <Link to={`/areas/${area.Id}/edit`} className='btn btn-link'>Edit</Link>
+          </td>
           <td><button type="button" className="btn btn-link" onClick={this.onDeleteAreaClick.bind(this, area.Id)}>Delete</button></td>
         </tr>
       );
