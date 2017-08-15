@@ -1,11 +1,10 @@
-import { FETCH_AREAS, DELETE_AREA } from '../actions/index';
+import { FETCH_AREAS, EDIT_AREA, DELETE_AREA } from '../actions/index';
 import _ from 'lodash';
 
 export default function(state = {}, action) {
   switch (action.type) {
     case FETCH_AREAS:
       // what is data?? it's axios attribute!
-      console.log(_.mapKeys(action.payload.data.dt, 'Id'));
       return _.mapKeys(action.payload.data.dt, 'Id');
     // case FETCH_POST:
     //   // const post = action.payload.data
@@ -16,6 +15,10 @@ export default function(state = {}, action) {
     //   // "key interpolation"
     //   return { ...state, [action.payload.data.id]: action.payload.data }
     //   return newState;
+    case EDIT_AREA:
+      console.log("return app state for edit area case");
+      // Just return whole state, we'll pick up exact area in edit component
+      return state;
     case DELETE_AREA:
       //action.payload == `id` as we defined in action creator
       //remove key value pair from app state object

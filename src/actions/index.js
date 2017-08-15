@@ -6,6 +6,7 @@ export const DELETE_POST = 'delete_post';
 export const FETCH_AREAS = 'fetch_areas';
 export const CREATE_AREA = 'create_area';
 export const DELETE_AREA = 'delete_area';
+export const EDIT_AREA = 'edit_area';
 
 
 const ROOT_URL = 'http://reduxblog.herokuapp.com/api';
@@ -69,5 +70,12 @@ export function deleteArea(values){
   return {
     type: DELETE_AREA,
     payload: values.id // return id of deleted area
+  }
+}
+
+export function editArea(values){
+  return {
+    type: EDIT_AREA,
+    payload: values // return area object but currently we can just take whole state
   }
 }

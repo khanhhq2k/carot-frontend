@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import _ from 'lodash';
 
-import {fetchAreas, deleteArea} from '../actions/index';
+import {fetchAreas, editArea, deleteArea} from '../actions/index';
 
 class AreasIndex extends Component {
   componentDidMount(){
@@ -20,13 +20,29 @@ class AreasIndex extends Component {
           <td>{area.Name}</td>
           <td>{area.Description}</td>
           <td>
-            <Link to={`/areas/${area.Id}/edit`} className='btn btn-link'>Edit</Link>
+            <Link to={`/areas/${area.Id}/edit`}
+              className='btn btn-link'
+              onClick={this.onEditAreaClick.bind(this, [area.Id, area.Name, area.Description]) }
+            >
+              Edit
+            </Link>
           </td>
           <td><button type="button" className="btn btn-link" onClick={this.onDeleteAreaClick.bind(this, area.Id)}>Delete</button></td>
         </tr>
       );
     });
   }
+
+  onEditAreaClick(values_array) {
+    // console.log(values_array);
+    const values = {
+      id: values_array[0],
+      name: values_array[1],
+      description: values_array[2]
+    };
+    this.props.editArea(values);
+  }
+
   onDeleteAreaClick(area_id){
     const values = {
       id: area_id
@@ -75,4 +91,4 @@ function mapStateToProps(state){
   return {areas: state.areas}
 }
 
-export default connect(mapStateToProps, {fetchAreas, deleteArea})(AreasIndex);
+export default connect(mapStateToProps, {fetchAreas, editArea, deleteArea})(AreasIndex);
