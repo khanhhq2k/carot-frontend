@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import _ from 'lodash';
 
-import {fetchAreas, editArea, deleteArea} from '../actions/index';
+import {fetchAreas, deleteArea} from '../actions/index';
 
 class AreasIndex extends Component {
   componentDidMount(){
@@ -15,19 +15,19 @@ class AreasIndex extends Component {
   renderAreas(){
     return _.map(this.props.areas, area => {
       return (
-        <tr key={area.Id}>
-          <td>{area.Id}</td>
-          <td>{area.Name}</td>
-          <td>{area.Description}</td>
+        <tr key={area.id}>
+          <td>{area.id}</td>
+          <td>{area.name}</td>
+          <td>{area.description}</td>
           <td>
-            <Link to={`/areas/${area.Id}/edit`}
+            <Link to={`/areas/${area.id}/edit`}
               className='btn btn-link'
-              onClick={this.onEditAreaClick.bind(this, [area.Id, area.Name, area.Description]) }
+              // onClick={this.onEditAreaClick.bind(this, [area.Id, area.Name, area.Description]) }
             >
               Edit
             </Link>
           </td>
-          <td><button type="button" className="btn btn-link" onClick={this.onDeleteAreaClick.bind(this, area.Id)}>Delete</button></td>
+          <td><button type="button" className="btn btn-link" onClick={this.onDeleteAreaClick.bind(this, area.id)}>Delete</button></td>
         </tr>
       );
     });
@@ -35,12 +35,12 @@ class AreasIndex extends Component {
 
   onEditAreaClick(values_array) {
     // console.log(values_array);
-    const values = {
-      id: values_array[0],
-      name: values_array[1],
-      description: values_array[2]
-    };
-    this.props.editArea(values);
+    // const values = {
+    //   id: values_array[0],
+    //   name: values_array[1],
+    //   description: values_array[2]
+    // };
+    // this.props.editArea(values);
   }
 
   onDeleteAreaClick(area_id){
@@ -91,4 +91,4 @@ function mapStateToProps(state){
   return {areas: state.areas}
 }
 
-export default connect(mapStateToProps, {fetchAreas, editArea, deleteArea})(AreasIndex);
+export default connect(mapStateToProps, {fetchAreas, deleteArea})(AreasIndex);

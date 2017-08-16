@@ -5,7 +5,13 @@ export default function(state = {}, action) {
   switch (action.type) {
     case FETCH_AREAS:
       // what is data?? it's axios attribute!
-      return _.mapKeys(action.payload.data.dt, 'Id');
+      // this is toLowerCase() object keys
+      let data = action.payload.data.dt;
+      data = data.map(function(obj){
+        return  _.mapKeys(obj, function (v, k) { return k.toLowerCase(); });
+      })
+      // end
+      return _.mapKeys(data, 'id'); // transform array of objects to: {1:{}, 2:{}, 21:{}}      
     // case FETCH_POST:
     //   // const post = action.payload.data
     //   // const newState = {...state};
@@ -16,7 +22,6 @@ export default function(state = {}, action) {
     //   return { ...state, [action.payload.data.id]: action.payload.data }
     //   return newState;
     case EDIT_AREA:
-      console.log("return app state for edit area case");
       // Just return whole state, we'll pick up exact area in edit component
       return state;
     case DELETE_AREA:
