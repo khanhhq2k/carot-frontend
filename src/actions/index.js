@@ -7,6 +7,7 @@ export const FETCH_AREAS = 'fetch_areas';
 export const CREATE_AREA = 'create_area';
 export const DELETE_AREA = 'delete_area';
 export const EDIT_AREA = 'edit_area';
+export const UPDATE_AREA = 'update_area';
 
 
 const ROOT_URL = 'http://reduxblog.herokuapp.com/api';
@@ -77,5 +78,12 @@ export function editArea(values){
   return {
     type: EDIT_AREA,
     payload: values // return area object but currently we can just take whole state
+  }
+}
+
+export function updateArea(values){
+  return {
+    type: UPDATE_AREA,
+    payload: values // pass area object to reducer to update it
   }
 }
